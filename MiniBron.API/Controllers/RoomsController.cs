@@ -46,7 +46,7 @@ namespace MiniBron.API.Controllers
         public async Task<IActionResult> CreateRoom(RoomCreateDTO roomCreateDTO)
         {
             int result = _roomsServices.CreateRoom(roomCreateDTO, this.GetHotelIdFromJwtToken());
-            if (result == -1) NotFound();
+            if (result <= 0) NotFound();
             return Ok(result);
         }
 

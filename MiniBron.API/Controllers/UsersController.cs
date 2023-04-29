@@ -44,7 +44,7 @@ namespace MiniBron.API.Controllers
         public async Task<IActionResult> CreateUser(UserCreateDTO user)
         {
             int result = _usersService.CreateUser(user, this.GetHotelIdFromJwtToken());
-            if (result == 0) NotFound();
+            if (result <= 0) NotFound();
             return Ok(result);
         }
 

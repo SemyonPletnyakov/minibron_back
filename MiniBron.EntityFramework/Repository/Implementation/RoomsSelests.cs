@@ -27,7 +27,7 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                                                             Where(r => r.HotelId == hotelId && r.Capacity == capasity).
                                                             ToList();*/
                     List<Room> result = db.Rooms.Where(r => r.HotelId == hotelId && r.Capacity == capasity).
-                                                 Except(db.Bookings.Where(b => b.Room.HotelId == hotelId && (b.StartDateTime > startDate && b.EndDateTime < startDate || b.StartDateTime > endDate && b.EndDateTime < endDate)).
+                                                 Except(db.Bookings.Where(b => b.Room.HotelId == hotelId && (b.StartDateTime < startDate && b.EndDateTime > startDate || b.StartDateTime < endDate && b.EndDateTime > endDate)||(b.StartDateTime > startDate && b.EndDateTime > startDate && b.StartDateTime < endDate && b.EndDateTime < endDate)).
                                                                     Include(b => b.Room).
                                                                     Select(b => b.Room)).
                                                  Except(db.Sessions.Where(b => b.Room.HotelId == hotelId && (b.EndDateTime < startDate || (b.EndDateTime == null && DateTime.Now.AddDays(15) < startDate))).

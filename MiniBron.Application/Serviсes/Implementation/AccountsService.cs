@@ -56,8 +56,8 @@ namespace MiniBron.Application.Serviсes.Implementation
                 AccountGetDTO result = new AccountGetDTO
                 {
                     JWTToken = encodedJwt,
-                    Role = user.Role,
-                    FIO = user.FIO
+                    Role = user?.Role,
+                    FIO = user?.FIO
                 };
                 return result;
             }
@@ -71,10 +71,10 @@ namespace MiniBron.Application.Serviсes.Implementation
             User u = usersSelects.GetHotelUsersById(userId, hotelId);
             return new AccounDTO()
             {
-                FIO = u.FIO,
-                Role = u.Role,
-                Login = u.Login,
-                Password = u.Password
+                FIO = u?.FIO,
+                Role = u?.Role,
+                Login = u?.Login,
+                Password = u?.Password
             };
         }
         public bool ChangeAccount(AccounDTO accountChangeDTO, int userId, int hotelId)

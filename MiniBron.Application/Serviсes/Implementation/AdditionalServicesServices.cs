@@ -20,7 +20,7 @@ namespace MiniBron.Application.Serviсes.Implementation
         }
         public IEnumerable<AdditionalServiceDTO> GetAllHotelServices(int hotelId)
         {
-            return additionalServicesSelects.GetAllHotelServices(hotelId).Select(r => new AdditionalServiceDTO()
+            return additionalServicesSelects.GetAllHotelServices(hotelId)?.Select(r => new AdditionalServiceDTO()
             {
                 Id = r.Id,
                 Title = r.Title,

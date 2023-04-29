@@ -20,7 +20,7 @@ namespace MiniBron.Application.Serviсes.Implementation
         }
         public IEnumerable<RoomDTO> GetFreeHolelRoomsByDataAndCapacity(DateTime startDate, DateTime endDate, int capasity, int hotelId)
         {
-            return roomsSelests.GetFreeHolelRoomsByDataAndCapacity(startDate, endDate, capasity, hotelId).
+            return roomsSelests.GetFreeHolelRoomsByDataAndCapacity(startDate, endDate, capasity, hotelId)?.
                 Select(r => new RoomDTO() {
                     Id = r.Id,
                     Title = r.Title,
@@ -32,7 +32,7 @@ namespace MiniBron.Application.Serviсes.Implementation
         }
         public IEnumerable<RoomDTO> GetAllHolelRooms(int hotelId)
         {
-            return roomsSelests.GetAllHolelRooms(hotelId).
+            return roomsSelests.GetAllHolelRooms(hotelId)?.
                 Select(r => new RoomDTO()
                 {
                     Id = r.Id,

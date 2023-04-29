@@ -20,7 +20,7 @@ namespace MiniBron.Application.Serviсes.Implementation
         }
         public IEnumerable<UserDTO> GetAllHotelUsers(int hotelId)
         {
-            return usersSelects.GetAllHotelUsers(hotelId).Select(u => new UserDTO() 
+            return usersSelects.GetAllHotelUsers(hotelId)?.Select(u => new UserDTO() 
                         {
                             Id = u.Id,
                             FIO = u.FIO,
@@ -31,7 +31,7 @@ namespace MiniBron.Application.Serviсes.Implementation
         }
         public UserDTO GetHotelUser(int userId, int hotelId)
         {
-            User u = usersSelects.GetHotelUsersById(userId, hotelId);
+            User u = usersSelects?.GetHotelUsersById(userId, hotelId);
             return new UserDTO()
                     {
                         Id = u.Id,
