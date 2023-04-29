@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniBron.Application.DTO;
 using MiniBron.Application.Serviсes.Interfaces;
+using MiniBron.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,23 +15,33 @@ namespace MiniBron.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        IAccountService _loginService;
-        public AccountController(IAccountService loginService)
+        IAccountsService _accountsService;
+        public AccountController(IAccountsService loginService)
         {
-            _loginService = loginService;
+            _accountsService = loginService;
         }
-        [HttpPost("Login")]
+        [HttpPost]
         public async Task<IActionResult> Login(AccountLoginDTO accountLoginDTO)
         {
-            AccountGetDTO result = _loginService.LoginAccount(accountLoginDTO);
+            AccountGetDTO result = _accountsService.LoginAccount(accountLoginDTO);
             if (result != null) return Ok(result);
             else return BadRequest();
         }
-        [Authorize(Roles = "admin")]
+        [Authorize]
         [HttpGet]
-        public async Task<IActionResult> ChangeMenuItem()
+        public async Task<IActionResult> ChangeAccount()
         {
-            return Ok(2);
+            AccounDTO result = _accountsService.GetAccountInfo( this.GetUserIdFromJwtToken(), this.GetHotelIdFromJwtToken());
+            if (result != null) return Ok(result);
+            else return NotFound(result);
+        }
+        [Authorize]
+        [HttpPut]
+        public async Task<IActionResult> ChangeAccount(AccounDTO accountChangeDTO)
+        {
+            bool result = _accountsService.ChangeAccount(accountChangeDTO, this.GetUserIdFromJwtToken(), this.GetHotelIdFromJwtToken());
+            if (result) return Ok(true);
+            else return NotFound(false);
         }
     }
 }

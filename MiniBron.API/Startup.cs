@@ -110,7 +110,8 @@ namespace MiniBron.API
                         };
                     });
 
-            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IAccountsService, AccountsService>();
+            services.AddTransient<IUsersServices, UsersServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

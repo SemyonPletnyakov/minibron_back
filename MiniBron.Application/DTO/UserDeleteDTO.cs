@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MiniBron.Application.DTO
 {
-    public class AccountLoginDTO
+    public class UserDeleteDTO
     {
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int Id { get; set; }
         public int HotelId { get; set; }
     }
 }

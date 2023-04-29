@@ -15,10 +15,10 @@ using System.Threading.Tasks;
 
 namespace MiniBron.Application.Serviсes.Implementation
 {
-    public class AccountService : IAccountService
+    public class AccountsService : IAccountsService
     {
         IUsersSelects usersSelects;
-        public AccountService()
+        public AccountsService()
         {
             usersSelects = new UsersSelects();
         }
@@ -27,7 +27,7 @@ namespace MiniBron.Application.Serviсes.Implementation
             try
             {
                 ClaimsIdentity claimsIdentity;
-                User user = usersSelects.GetUserByHotelLoginPassword(accountLoginDTO.HostelId, accountLoginDTO.Login, accountLoginDTO.Password);
+                User user = usersSelects.GetUserByHotelLoginPassword(accountLoginDTO.HotelId, accountLoginDTO.Login, accountLoginDTO.Password);
                 if (user != null)
                 {
                     var claims = new List<Claim>
@@ -65,6 +65,29 @@ namespace MiniBron.Application.Serviсes.Implementation
             {
                 return null;
             }
+        }
+        public AccounDTO GetAccountInfo(int userId, int hotelId)
+        {
+            User u = usersSelects.GetHotelUsersById(userId, hotelId);
+            return new AccounDTO()
+            {
+                FIO = u.FIO,
+                Role = u.Role,
+                Login = u.Login,
+                Password = u.Password
+            };
+        }
+        public bool ChangeAccount(AccounDTO accountChangeDTO, int userId, int hotelId)
+        {
+            return usersSelects.ChangeUser(new User()
+            {
+                Id = userId,
+                HotelId = hotelId,
+                FIO = accountChangeDTO.FIO,
+                Role = accountChangeDTO.Role,
+                Login = accountChangeDTO.Login,
+                Password = accountChangeDTO.Password
+            });
         }
     }
 }
