@@ -13,6 +13,6 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
         public IEnumerable<Room> GetAllHolelRooms(int hotelId);
         public int CreateRoom(Room room);
         public bool ChangeRoom(Room room);
-        public bool DeleteRoom(Room room);
+        public bool DeleteRoom(int roomId, int hotelId);
     }
 }

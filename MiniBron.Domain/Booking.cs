@@ -15,6 +15,7 @@ namespace MiniBron.Domain
         public DateTime EndDateTime { get; set; }
         public string FIO { get; set; }
         public string Phone { get; set; }
+        public string Email { get; set; }
         public List<ServicesForBooking> ServicesForBookings { get; set; }
     }
 }

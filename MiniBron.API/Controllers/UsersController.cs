@@ -53,7 +53,7 @@ namespace MiniBron.API.Controllers
         public async Task<IActionResult> ChangeUser(UserDTO user)
         {
             bool result = _usersService.ChangeUser(user, this.GetHotelIdFromJwtToken());
-            if (!result) NotFound(false);
+            if (!result) NotFound();
             return Ok(true);
         }
 
@@ -62,7 +62,7 @@ namespace MiniBron.API.Controllers
         public async Task<IActionResult> DeleteUser(UserDeleteDTO user)
         {
             bool result = _usersService.DeleteUser(user, this.GetHotelIdFromJwtToken());
-            if (!result) NotFound(false);
+            if (!result) NotFound();
             return Ok(true);
         }
     }

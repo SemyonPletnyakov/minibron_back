@@ -33,7 +33,7 @@ namespace MiniBron.API.Controllers
         {
             AccounDTO result = _accountsService.GetAccountInfo( this.GetUserIdFromJwtToken(), this.GetHotelIdFromJwtToken());
             if (result != null) return Ok(result);
-            else return NotFound(result);
+            else return NotFound();
         }
         [Authorize]
         [HttpPut]
@@ -41,7 +41,7 @@ namespace MiniBron.API.Controllers
         {
             bool result = _accountsService.ChangeAccount(accountChangeDTO, this.GetUserIdFromJwtToken(), this.GetHotelIdFromJwtToken());
             if (result) return Ok(true);
-            else return NotFound(false);
+            else return NotFound();
         }
     }
 }

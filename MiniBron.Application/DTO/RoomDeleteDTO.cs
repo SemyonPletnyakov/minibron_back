@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniBron.Application.DTO
 {
-    public class UserDeleteDTO
+    public class RoomDeleteDTO
     {
         public int Id { get; set; }
     }

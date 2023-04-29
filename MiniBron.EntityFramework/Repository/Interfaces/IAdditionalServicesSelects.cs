@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiniBron.EntityFramework.Repository.Interfaces
 {
-    public interface IAdditionalServices
+    public interface IAdditionalServicesSelects
     {
         public IEnumerable<AdditionalService> GetAllHotelServices(int hotelId);
         public int CreateHotelServices(AdditionalService additionalService);
         public bool ChangeHotelServices(AdditionalService additionalService);
-        public bool DeleteHotelServices(AdditionalService additionalService);
+        public bool DeleteHotelServices(int serviceId, int hotelId);
 
     }
 }
