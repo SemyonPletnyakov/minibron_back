@@ -27,6 +27,22 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 return null;
             }
         }
+        public IEnumerable<Booking> GetActualBookings(int hotelId)
+        {
+            try
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+
+                    List<Booking> result = db.Bookings.Where(r => r.Room.HotelId == hotelId && r.StartDateTime > DateTime.Now).Include(r => r.Room).Include(r => r.ServicesForBookings).ThenInclude(s => s.AdditionalService).ToList();
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public Booking GetBookingsById(int bookingId, int hotelId)
         {
             try
@@ -93,7 +109,7 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 using (ApplicationContext db = new ApplicationContext())
                 {
 
-                    Booking mainBooking = db.Bookings.FirstOrDefault(b=>b.Id == booking.Id && b.Room.Hotel.Id == hotelId);
+                    Booking mainBooking = db.Bookings.Include(b => b.Room).FirstOrDefault(b=>b.Id == booking.Id && b.Room.Hotel.Id == hotelId);
                     if (mainBooking == null) return false;
                     mainBooking.RoomId = booking.RoomId;
                     mainBooking.StartDateTime = booking.StartDateTime;

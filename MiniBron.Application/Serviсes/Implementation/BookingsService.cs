@@ -39,6 +39,28 @@ namespace MiniBron.Application.Serviсes.Implementation
                     })
                 });
         }
+        public IEnumerable<BookingDTO> GetActualBookings(int hotelId)
+        {
+            return bookingsSelect.GetActualBookings(hotelId)?.Select(b => new BookingDTO()
+            {
+                Id = b.Id,
+                RoomId = b.RoomId,
+                RoomName = b.Room.PictureName,
+                StartDateTime = b.StartDateTime,
+                EndDateTime = b.EndDateTime,
+                FIO = b.FIO,
+                Phone = b.Phone,
+                Email = b.Email,
+                ServicesForBookings = b.ServicesForBookings?.Select(s => new ServicesForBookingDTO()
+                {
+                    Id = s.Id,
+                    BookingId = s.BookingId,
+                    AdditionalServiceId = s.AdditionalServiceId,
+                    ServiceName = s.AdditionalService.Title,
+                    Price = s.AdditionalService.Price
+                })
+            });
+        }
         public BookingDTO GetBookingsById(int bookingId, int hotelId)
         {
             Booking b = bookingsSelect.GetBookingsById(bookingId, hotelId);

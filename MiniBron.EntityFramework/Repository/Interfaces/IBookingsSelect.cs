@@ -6,6 +6,7 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
     public interface IBookingsSelect
     {
         public IEnumerable<Booking> GetAllBookings(int hotelId);
+        public IEnumerable<Booking> GetActualBookings(int hotelId);
         public Booking GetBookingsById(int bookingId, int hotelId);
         public Booking GetBookingsByEmailOrTelepthone(string telephone, string email, int hotelId);
         public int CreateBooking(Booking booking, int hotelId);

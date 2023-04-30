@@ -10,7 +10,7 @@ namespace MiniBron.Application.Serviсes.Interfaces
     public interface IBookingsService
     {
         public IEnumerable<BookingDTO> GetAllBokings(int hotelId);
-
+        public IEnumerable<BookingDTO> GetActualBookings(int hotelId);
         public BookingDTO GetBookingsById(int bookingId, int hotelId);
         public BookingDTO GetBookingsByEmailOrTelepthone(string telephone, string email, int hotelId);
         public int CreateBooking(BookingCreateDTO booking, int hotelId);

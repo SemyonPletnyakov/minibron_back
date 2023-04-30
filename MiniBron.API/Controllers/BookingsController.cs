@@ -20,7 +20,7 @@ namespace MiniBron.API.Controllers
         {
             _bookingsService = bookingsService;
         }
-        [Authorize(Roles = "admin")]
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllBokings()
         {
@@ -28,9 +28,17 @@ namespace MiniBron.API.Controllers
             if (result == null) NotFound();
             return Ok(result);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize]
+        [HttpGet("GetActual")]
+        public async Task<IActionResult> GetActualBookings()
+        {
+            IEnumerable<BookingDTO> result = _bookingsService.GetActualBookings(this.GetHotelIdFromJwtToken());
+            if (result == null) NotFound();
+            return Ok(result);
+        }
+        [Authorize]
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetAllHolelRooms(int bookingId)
+        public async Task<IActionResult> GetBookingsById(int bookingId)
         {
             BookingDTO result = _bookingsService.GetBookingsById(bookingId,this.GetHotelIdFromJwtToken());
             if (result == null) NotFound();
