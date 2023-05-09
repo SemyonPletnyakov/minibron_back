@@ -70,17 +70,17 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 return -1;
             }
         }
-        public bool ChangeUser(User user)
+        public bool ChangeUser(User user, bool changeRole)
         {
             try
             {
                 using (ApplicationContext db = new ApplicationContext())
                 {
-                    User mainUser = db.Users.FirstOrDefault(u => u.Id == user.Id && u.HotelId == user.HotelId);
+                    User mainUser = db.Users.FirstOrDefault(u => u.Id == user.Id && u.Login == user.Login && u.HotelId == user.HotelId);
                     if (mainUser == null) return false;
 
                     mainUser.FIO = user.FIO;
-                    mainUser.Role = user.Role;
+                    if (changeRole) mainUser.Role = user.Role;
                     mainUser.Login = user.Login;
                     mainUser.Password = user.Password;
 
@@ -113,6 +113,7 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 return false;
             }
         }
+        
     }
 
 }

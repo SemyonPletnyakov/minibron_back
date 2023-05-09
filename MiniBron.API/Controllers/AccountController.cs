@@ -37,7 +37,7 @@ namespace MiniBron.API.Controllers
         }
         [Authorize]
         [HttpPut]
-        public async Task<IActionResult> ChangeAccount(AccounDTO accountChangeDTO)
+        public async Task<IActionResult> ChangeAccount(AccounChangeDTO accountChangeDTO)
         {
             bool result = _accountsService.ChangeAccount(accountChangeDTO, this.GetUserIdFromJwtToken(), this.GetHotelIdFromJwtToken());
             if (result) return Ok(true);

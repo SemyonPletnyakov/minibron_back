@@ -77,17 +77,16 @@ namespace MiniBron.Application.Serviсes.Implementation
                 Password = u?.Password
             };
         }
-        public bool ChangeAccount(AccounDTO accountChangeDTO, int userId, int hotelId)
+        public bool ChangeAccount(AccounChangeDTO accountChangeDTO, int userId, int hotelId)
         {
             return usersSelects.ChangeUser(new User()
             {
                 Id = userId,
                 HotelId = hotelId,
                 FIO = accountChangeDTO.FIO,
-                Role = accountChangeDTO.Role,
                 Login = accountChangeDTO.Login,
                 Password = accountChangeDTO.Password
-            });
+            }, false);
         }
     }
 }

@@ -35,6 +35,7 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 {
 
                     List<Booking> result = db.Bookings.Where(r => r.Room.HotelId == hotelId && r.StartDateTime > DateTime.Now).Include(r => r.Room).Include(r => r.ServicesForBookings).ThenInclude(s => s.AdditionalService).ToList();
+                    System.Diagnostics.Debug.WriteLine(result.Count);
                     return result;
                 }
             }
@@ -218,6 +219,20 @@ namespace MiniBron.EntityFramework.Repository.Implementation
             catch
             {
                 return false;
+            }
+        }
+        public Hotel GetEmail(int hotelId)
+        {
+            try
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    return db.Hotels.FirstOrDefault(x => x.Id == hotelId);
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
     }

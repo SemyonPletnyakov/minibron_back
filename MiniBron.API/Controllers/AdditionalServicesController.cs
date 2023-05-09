@@ -24,9 +24,9 @@ namespace MiniBron.API.Controllers
 
         
         [HttpGet]
-        public async Task<IActionResult> GetAllHotelServices()
+        public async Task<IActionResult> GetAllHotelServices(int hotelId)
         {
-            IEnumerable<AdditionalServiceDTO> result = _additionalServicesServices.GetAllHotelServices(this.GetHotelIdFromJwtToken());
+            IEnumerable<AdditionalServiceDTO> result = _additionalServicesServices.GetAllHotelServices(hotelId);
             if (result == null) NotFound();
             return Ok(result);
         }

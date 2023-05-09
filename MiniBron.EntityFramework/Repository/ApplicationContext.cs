@@ -19,11 +19,9 @@ namespace MiniBron.EntityFramework.Repository
         public DbSet<ServicesForBooking> ServicesForBookings { get; set; }
         public DbSet<ServicesForSession> ServicesForSessions { get; set; }
         public DbSet<Session> Sessions { get; set; }
-
         public ApplicationContext()
         {
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-0USVL0V\SQLEXPRESS;

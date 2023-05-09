@@ -113,7 +113,8 @@ namespace MiniBron.EntityFramework.Repository.Implementation
             try
             {
                 Session session = db.Sessions.FirstOrDefault(s => s.Id == sessionId);
-                session.TotalPrice = session.ActualPriceForRoom + db.ServicesForSessions.Where(sv => sv.SessionsId == sessionId).Sum(sv => sv.ActualPriceForService);
+                int dayCount = ((session.EndDateTime ?? DateTime.Now) - session.StartDateTime).Days;
+                session.TotalPrice = session.ActualPriceForRoom*(dayCount>0?dayCount:0) + db.ServicesForSessions.Where(sv => sv.SessionsId == sessionId).Sum(sv => sv.ActualPriceForService);
                 db.SaveChanges();
             }
             catch { }

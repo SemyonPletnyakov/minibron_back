@@ -62,7 +62,7 @@ namespace MiniBron.Application.Serviсes.Implementation
                         Role = user.Role,
                         Login = user.Login,
                         Password = user.Password
-                    });
+                    }, true);
         }
         public bool DeleteUser(UserDeleteDTO user, int hotelId)
         {

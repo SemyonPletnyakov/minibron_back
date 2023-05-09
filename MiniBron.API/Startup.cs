@@ -76,10 +76,12 @@ namespace MiniBron.API
             services.AddCors(options => options.AddPolicy("CorsPolicy",
             builder =>
             {
-                builder.WithOrigins("http://localhost:3000");
+                /*builder.WithOrigins("http://localhost:3000");
                 builder.WithOrigins("http://192.168.0.82:3000");
                 builder.WithOrigins("http://192.168.0.82");
-                builder.WithOrigins("http://172.20.10.2:3000");
+                builder.WithOrigins("http://172.20.10.2:3000");*/
+                //builder.AllowAnyOrigin();
+                builder.SetIsOriginAllowed(origin => true);
                 builder.AllowAnyHeader().WithExposedHeaders("*");
                 builder.AllowAnyMethod();
                 builder.AllowCredentials().WithExposedHeaders("Location");

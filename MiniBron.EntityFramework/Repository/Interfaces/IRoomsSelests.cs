@@ -11,6 +11,7 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
     {
         public IEnumerable<Room> GetFreeHolelRoomsByDataAndCapacity(DateTime startDate, DateTime endDate, int capasity, int hotelId);
         public IEnumerable<Room> GetAllHolelRooms(int hotelId);
+        public Room GetRoomById(int roomId, int hotelId);
         public int CreateRoom(Room room);
         public bool ChangeRoom(Room room);
         public bool DeleteRoom(int roomId, int hotelId);

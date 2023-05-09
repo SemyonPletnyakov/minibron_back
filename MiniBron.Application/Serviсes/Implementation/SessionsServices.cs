@@ -24,7 +24,7 @@ namespace MiniBron.Application.Serviсes.Implementation
             {
                 Id = b.Id,
                 RoomId = b.RoomId,
-                RoomName = b.Room.PictureName,
+                RoomName = b.Room.Title,
                 StartDateTime = b.StartDateTime,
                 EndDateTime = b.EndDateTime,
                 FIO = b.FIO,
@@ -48,7 +48,7 @@ namespace MiniBron.Application.Serviсes.Implementation
             {
                 Id = b.Id,
                 RoomId = b.RoomId,
-                RoomName = b.Room.PictureName,
+                RoomName = b.Room.Title,
                 StartDateTime = b.StartDateTime,
                 EndDateTime = b.EndDateTime,
                 FIO = b.FIO,
@@ -74,7 +74,7 @@ namespace MiniBron.Application.Serviсes.Implementation
             {
                 Id = b.Id,
                 RoomId = b.RoomId,
-                RoomName = b.Room.PictureName,
+                RoomName = b.Room.Title,
                 StartDateTime = b.StartDateTime,
                 EndDateTime = b.EndDateTime,
                 FIO = b.FIO,
@@ -117,8 +117,7 @@ namespace MiniBron.Application.Serviсes.Implementation
                 FIO = session.FIO,
                 Phone = session.Phone,
                 Email = session.Email,
-                ActualPriceForRoom = session.ActualPriceForRoom,
-                TotalPrice = session.TotalPrice
+                ActualPriceForRoom = session.ActualPriceForRoom
             }, hotelId);
         }
         public bool DeleteSessionById(SessionDeleteDTO sessionDeleteDTO, int hotelId)

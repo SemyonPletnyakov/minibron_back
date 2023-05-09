@@ -43,7 +43,7 @@ namespace MiniBron.Application.Serviсes.Implementation
             }).ToList(), hotelId);
             try
             {
-                int roomId = pictures.FirstOrDefault().RoomId;
+                int roomId = pictures?.FirstOrDefault()?.RoomId ?? 0;
                 if (roomId != 0)
                 {
                     var pictureList = picturesSelects.GetPicturesByRoomId(roomId);

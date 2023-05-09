@@ -11,6 +11,6 @@ namespace MiniBron.Application.Serviсes.Interfaces
     {
         public AccountGetDTO LoginAccount(AccountLoginDTO accountLoginDTO);
         public AccounDTO GetAccountInfo(int userId, int hotelId);
-        public bool ChangeAccount(AccounDTO accountChangeDTO, int userId, int hotelId);
+        public bool ChangeAccount(AccounChangeDTO accountChangeDTO, int userId, int hotelId);
     }
 }

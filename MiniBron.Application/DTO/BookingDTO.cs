@@ -16,6 +16,8 @@ namespace MiniBron.Application.DTO
         public string FIO { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public decimal Price { get; set; }
+        public string PictureName { get; set; }
         public IEnumerable<ServicesForBookingDTO> ServicesForBookings { get; set; }
     }
 }

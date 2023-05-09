@@ -15,5 +15,6 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
         public bool DeleteBookingsEmailOrTelepthone(string telephone, string email, int hotelId);
         public int AddServiceInBooking(ServicesForBooking servicesForBooking, int hotelId);
         public bool DeleteServisForBookingById(int serviceForBookingId, int hotelId);
+        public Hotel GetEmail(int hotelId);
     }
 }

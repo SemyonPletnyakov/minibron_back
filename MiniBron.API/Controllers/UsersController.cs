@@ -61,9 +61,11 @@ namespace MiniBron.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteUser(UserDeleteDTO user)
         {
-            bool result = _usersService.DeleteUser(user, this.GetHotelIdFromJwtToken());
+            bool result;
+            if (this.GetUserIdFromJwtToken() == user.Id) result = false;
+            else result = _usersService.DeleteUser(user, this.GetHotelIdFromJwtToken());
             if (!result) NotFound();
-            return Ok(true);
+            return Ok(result);
         }
     }
 }
