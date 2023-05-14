@@ -24,7 +24,12 @@ namespace MiniBron.EntityFramework.Repository
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-0USVL0V\SQLEXPRESS;
+            /*optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-0USVL0V\SQLEXPRESS;
+                                        Initial Catalog=minibron_db;Integrated Security=True;
+                                        Connect Timeout=30;Encrypt=False;
+                                        TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                        MultiSubnetFailover=False");*/
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-7GQT4U6\SQLEXPRESS;
                                         Initial Catalog=minibron_db;Integrated Security=True;
                                         Connect Timeout=30;Encrypt=False;
                                         TrustServerCertificate=False;ApplicationIntent=ReadWrite;
