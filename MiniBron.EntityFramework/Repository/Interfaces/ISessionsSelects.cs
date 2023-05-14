@@ -17,5 +17,6 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
         public bool DeleteSessionById(int sessionId, int hotelId);
         public int AddServiceInSession(ServicesForSession servicesForSession, int hotelId);
         public bool DeleteServisForSessionById(int serviceForSessionId, int hotelId);
+        public IEnumerable<Session> GetSessionsByDate(DateTime startDate, DateTime endDate, int hotelId);
     }
 }

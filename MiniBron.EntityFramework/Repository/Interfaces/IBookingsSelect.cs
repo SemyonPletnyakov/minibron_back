@@ -1,4 +1,5 @@
 ﻿using MiniBron.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace MiniBron.EntityFramework.Repository.Interfaces
@@ -16,5 +17,6 @@ namespace MiniBron.EntityFramework.Repository.Interfaces
         public int AddServiceInBooking(ServicesForBooking servicesForBooking, int hotelId);
         public bool DeleteServisForBookingById(int serviceForBookingId, int hotelId);
         public Hotel GetEmail(int hotelId);
+        public IEnumerable<Booking> GetBookingsByDate(DateTime startDate, DateTime endDate, int hotelId);
     }
 }

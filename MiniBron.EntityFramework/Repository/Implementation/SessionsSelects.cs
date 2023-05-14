@@ -183,6 +183,24 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 return false;
             }
         }
+        public IEnumerable<Session> GetSessionsByDate(DateTime startDate, DateTime endDate, int hotelId)
+        {
+            try
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+
+                    return db.Sessions.Where(s => s.EndDateTime >= startDate && 
+                                            (s.EndDateTime <= endDate || s.EndDateTime == null) && 
+                                            s.Room.HotelId == hotelId)
+                                            .Include(s => s.Room).ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
 

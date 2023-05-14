@@ -235,5 +235,23 @@ namespace MiniBron.EntityFramework.Repository.Implementation
                 return null;
             }
         }
+        public IEnumerable<Booking> GetBookingsByDate(DateTime startDate, DateTime endDate, int hotelId)
+        {
+            try
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+
+                    return db.Bookings.Where(s => s.EndDateTime >= startDate && 
+                                                 (s.EndDateTime <= endDate) && 
+                                                 s.Room.HotelId == hotelId).
+                                                 Include(s => s.Room).ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
